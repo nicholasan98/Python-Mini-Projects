@@ -1,5 +1,6 @@
-from player import HumanPlayer, RandomComputerPlayer
+from player import HumanPlayer, RandomComputerPlayer, GeniusComputerPlayer
 import time
+import math
 
 class TicTacToe:
     def __init__(self):
@@ -18,7 +19,7 @@ class TicTacToe:
     # static method cause it refers to no board, so does not need to call self
     @staticmethod
     def print_board_nums():
-        # 0 | 1 | 2 etc (tells us what number corresponds with which spot)
+        # 0 | 1 | 2 etc (tells us what number c4orresponds with which spot)
         number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
         for row in number_board:
             print('| ' + ' | '.join(row) + ' |')
@@ -100,6 +101,7 @@ def play(game, x_player, o_player, print_game = True):
 
         #let's define a function to make a move!
         if game.make_move(square, letter):
+            
             if print_game:
                 print(letter + f' makes a move to square {square}')
                 game.print_board()
@@ -126,6 +128,6 @@ def play(game, x_player, o_player, print_game = True):
 
 if __name__ == '__main__':
     x_player = HumanPlayer('X')
-    o_player = RandomComputerPlayer('O')
+    o_player = GeniusComputerPlayer('O')
     t = TicTacToe()
     play(t, x_player, o_player, print_game=True)
