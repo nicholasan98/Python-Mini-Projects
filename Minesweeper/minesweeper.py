@@ -37,7 +37,14 @@ class Board:
             row = loc // self.dim_size  # we want the number of times dim_size goes into loc to tell us what row to look at
             col = loc % self.dim_size # we want the remainder to tell us what index in that row to look at
 
-            
+            if board[row][col] == '*':
+                # this means we've actually planted a bomb there already so keep going
+                continue
+
+            board[row][col] = '*' # plant the bomb
+            bombs_planted += 1
+        
+        return board
 
 # play the game
 def play(dim_size = 10, num_bombs = 10):
