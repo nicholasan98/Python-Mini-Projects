@@ -15,7 +15,7 @@ def naive_search(l, target):
     return -1
 
 # binary search uses divide and conquer
-# w weill leverage the fact taht our list is SORTED
+# we will leverage the fact taht our list is SORTED
 def binary_search(l, target, low = None, high = None):
     # example l = [1, 3, 5, 10, 12] should return 3
     
@@ -30,6 +30,10 @@ def binary_search(l, target, low = None, high = None):
 
     midpoint = (low + high) // 2  # 2
 
+    # the logic behind these if else statements is basically;
+    # take the halfway point, if halfway is the target, return target
+    # if the value is higher or lower, recurse into the half that is higher/lower
+    # then keep sorting by half the list
     if l[midpoint] == target:
         return midpoint
     elif target < l[midpoint]:
@@ -44,6 +48,8 @@ if __name__ == '__main__':
     # print(naive_search(l, target))
     # print(binary_search(l, target))
 
+
+    # This next part in main essentially made it's own list of sorted values and checked
     length = 10000
     # build a sorted list of length 10000
     sorted_list = set()
