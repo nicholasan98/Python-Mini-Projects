@@ -3,7 +3,6 @@ import time
 
 # This will prove that binary search is faster than naive search
 
-
 # naive search: loops through the entire list and checks if the target is equal to the value
 # if yes, return index
 # if no, then return -1
