@@ -1,3 +1,6 @@
+# this is a player python class in which a tic-tac-toe game can pull data from a variety of player types
+# to then run through the game
+
 import math
 import random
 

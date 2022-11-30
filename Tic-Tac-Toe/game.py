@@ -1,3 +1,6 @@
+# This is a code that is used to initialize and run a tic-tac-toe game through the terminal
+# it pulls an import from player.py
+
 from player import HumanPlayer, RandomComputerPlayer, GeniusComputerPlayer
 import time
 import math
