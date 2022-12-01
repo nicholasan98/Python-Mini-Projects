@@ -45,10 +45,48 @@ class Board:
             bombs_planted += 1
         
         return board
+    
+    def assign_values_to_board(self):
+        # now that we have the boms planted, let's assign a number 0-8 for all the empty spaces that
+        # represents how many neighbouring bombs there are. We can compute these and it'll save us the
+        # effort of checking what's around the baord later on
+
+        for r in range(self.dim_size):
+            for c in range(self.dim_size):
+                if self.board[r][c] == '*':
+                    # if this is already a bomb, we don't want to calculated anything
+                    continue
+                self.board[r][c] = self.get_num_neighbouring_bombs(r, c)
+
+    def get_num_neighbouring_bombs(self, row, col):
+        # let's iterate through each of the neighbouring positions and sum number of bombs
+        # top left: (row-1, col-1)
+        # top middle: (row-1, col)
+        # top right: (row-1, col+1)
+        # left: (row, col-1)
+        # right: (row, col+1)
+        # bottom left: (row+1, col-1)
+        # bottom middle: (row+1, col)
+        # bottom right: (row+1, col+1)
+
+        # make sure not to go out of bounds:
+
+        num_neighbouring_bombs = 0
+        for r in range(max(0, row - 1)), min(self.dim_size-1,(row + 1) + 1):
+            for c in range(max(0, col - 1), min(self.dim_size - 1, (col + 1) + 1)):
+                if r == row and c == col:
+                    # our original location, don't check
+                    continue
+                if self.board[r][c] == '*':
+                    num_neighbouring_bombs += 1
+                
+        return num_neighbouring_bombs
 
 # play the game
 def play(dim_size = 10, num_bombs = 10):
     # Step 1: create the board and plant the bombs
+    board = Board(dim_size, num_bombs)
+
     # Step 2: show the user the baord and ask for where they want to dig
     # Step 3a: if location is a bomb, show game over message
     # Step 3b: if location is not a bomb, dig recursively until each square is at least next to a bomb
