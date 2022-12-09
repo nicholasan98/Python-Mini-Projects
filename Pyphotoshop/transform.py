@@ -119,4 +119,3 @@ if __name__ == '__main__':
     # let's combine these and make an edge detector!
     sobel_xy = combine_images(sobel_x, sobel_y)
     sobel_xy.write_image('edge_xy.png')
-

@@ -141,7 +141,7 @@ try:
     # If this import does work, then it overrides pure-python
     # filtering functions defined later in this file (see `class
     # pngfilters`).
-    import cpngfilters as pngfilters
+    import png as pngfilters
 except ImportError:
     pass
 

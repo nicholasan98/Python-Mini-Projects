@@ -33,4 +33,3 @@ def combine_images(image1, image2):
 if __name__ == '__main__':
     lake = Image(filename='lake.png')
     city = Image(filename='city.png')
-
